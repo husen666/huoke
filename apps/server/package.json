@@ -1,0 +1,43 @@
+{
+  "name": "@huoke/server",
+  "version": "5.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsup src/index.ts --format esm --dts",
+    "start": "node dist/index.js",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:seed": "tsx src/db/seed.ts",
+    "db:seed-notifications": "tsx src/db/seed-notifications.ts",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1",
+    "@huoke/shared": "workspace:*",
+    "bcryptjs": "^2",
+    "bullmq": "^5",
+    "dayjs": "^1",
+    "drizzle-orm": "^0.36",
+    "hono": "^4",
+    "ioredis": "^5",
+    "jsonwebtoken": "^9",
+    "openai": "^4",
+    "postgres": "^3",
+    "socket.io": "^4",
+    "uuid": "^10",
+    "zod": "^3"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2",
+    "@types/jsonwebtoken": "^9",
+    "@types/node": "^22",
+    "@types/uuid": "^10",
+    "dotenv": "^17.3.1",
+    "drizzle-kit": "^0.30",
+    "tsup": "^8",
+    "tsx": "^4",
+    "typescript": "^5.7.0"
+  }
+}

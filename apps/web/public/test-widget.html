@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>客服挂件测试页</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #1e293b; }
+    .hero {
+      max-width: 960px; margin: 0 auto; padding: 80px 24px;
+    }
+    .hero h1 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+    .hero p { font-size: 18px; color: #64748b; line-height: 1.7; max-width: 600px; }
+    .nav {
+      border-bottom: 1px solid #e2e8f0; background: #fff; padding: 0 24px;
+      display: flex; align-items: center; height: 60px; max-width: 960px; margin: 0 auto;
+    }
+    .nav .logo { font-size: 20px; font-weight: 700; color: #4f46e5; }
+    .nav .links { margin-left: auto; display: flex; gap: 24px; }
+    .nav a { color: #64748b; text-decoration: none; font-size: 14px; }
+    .nav a:hover { color: #1e293b; }
+    .features {
+      max-width: 960px; margin: 0 auto; padding: 60px 24px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;
+    }
+    .card {
+      background: #fff; border-radius: 12px; padding: 28px;
+      border: 1px solid #e2e8f0; transition: box-shadow 0.2s;
+    }
+    .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .card p { font-size: 14px; color: #64748b; line-height: 1.6; }
+    .card .icon {
+      width: 40px; height: 40px; border-radius: 10px; background: #eef2ff;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: #4f46e5;
+    }
+    .tip {
+      max-width: 960px; margin: 0 auto; padding: 40px 24px;
+    }
+    .tip-box {
+      background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 16px 20px;
+      font-size: 14px; color: #92400e; line-height: 1.7;
+    }
+    .footer {
+      max-width: 960px; margin: 0 auto; padding: 40px 24px;
+      text-align: center; color: #94a3b8; font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <div class="logo">MyCompany</div>
+    <div class="links">
+      <a href="#">首页</a>
+      <a href="#">产品</a>
+      <a href="#">方案</a>
+      <a href="#">关于我们</a>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>欢迎来到示例网站</h1>
+    <p>这是一个用于测试客服咨询挂件的模拟页面。右下角的聊天气泡就是嵌入的在线客服入口，点击即可与客服对话。</p>
+  </div>
+
+  <div class="features">
+    <div class="card">
+      <div class="icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3>在线实时对话</h3>
+      <p>访客无需注册，点击右下角气泡即可开始咨询，消息实时送达客服后台。</p>
+    </div>
+    <div class="card">
+      <div class="icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <h3>AI 智能回复</h3>
+      <p>系统基于知识库自动回复常见问题，7×24 小时不间断服务。</p>
+    </div>
+    <div class="card">
+      <div class="icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>人工无缝接管</h3>
+      <p>客服人员可在管理后台随时接管对话，访客端无感切换。</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="tip-box">
+      💡 <strong>测试方法：</strong>点击右下角蓝色聊天气泡，输入任意消息发送。然后回到管理后台的「消息中心」查看这条对话，还可以在后台直接回复访客。
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 MyCompany · 此页面仅用于客服挂件功能测试
+  </div>
+
+  <!-- 客服挂件 -->
+  <script src="/widget.js" data-site-token="06a12e23-acda-45eb-92d3-071a4eaacb3b" data-color="#4F46E5" data-position="right"></script>
+
+</body>
+</html>

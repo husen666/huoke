@@ -1,0 +1,38 @@
+# Multi-stage build for Next.js (apps/web)
+# Build context: repo root. Expects apps/web with Next.js and output: 'standalone'.
+
+# ---- Base ----
+FROM node:22-alpine AS base
+RUN corepack enable && corepack prepare pnpm@latest --activate
+WORKDIR /app
+
+# ---- Dependencies ----
+FROM base AS deps
+COPY . .
+RUN pnpm install --frozen-lockfile
+
+# ---- Builder ----
+FROM base AS builder
+COPY --from=deps /app .
+ENV NEXT_TELEMETRY_DISABLED=1
+# Build only the web app (turbo will build dependencies if any)
+RUN pnpm run build --filter=./apps/web
+
+# ---- Runner (standalone) ----
+FROM node:22-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
+
+# Copy standalone output from builder
+COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/apps/web/.next/static ./apps/web/.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/apps/web/public ./apps/web/public
+
+USER nextjs
+EXPOSE 3000
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+# Standalone server entry is under the app path
+CMD ["node", "apps/web/server.js"]

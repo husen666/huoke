@@ -1,0 +1,25 @@
+{
+  "name": "huokeagent",
+  "version": "5.0.0",
+  "private": true,
+  "description": "火客智能营销获客系统 - AI 驱动全渠道智能营销获客平台",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "db:generate": "turbo run db:generate --filter=@huoke/server",
+    "db:migrate": "turbo run db:migrate --filter=@huoke/server",
+    "db:seed": "turbo run db:seed --filter=@huoke/server",
+    "selftest:ticket-attachments": "pnpm -C apps/server exec tsx src/scripts/selftest-ticket-attachments.ts",
+    "selftest:widget-modules": "pnpm -C apps/server exec tsx src/scripts/selftest-widget-modules.ts",
+    "docker:dev": "docker compose -f docker-compose.dev.yml up -d",
+    "docker:build": "docker compose build",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f"
+  },
+  "devDependencies": {
+    "turbo": "^2"
+  },
+  "packageManager": "pnpm@9.15.0"
+}

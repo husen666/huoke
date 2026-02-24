@@ -1,0 +1,100 @@
+=== STEP 1: Login Page ===
+Current URL: http://localhost:3001/login
+WARNING: Found 1 error elements on login page
+
+=== STEP 2: Logging in ===
+After login URL: http://localhost:3001/dashboard
+
+=== STEP 3: Dashboard ===
+Dashboard URL: http://localhost:3001/dashboard
+
+=== STEP 4: Customers Page ===
+Customers URL: http://localhost:3001/dashboard/customers
+Customers - Pagination elements found: 0
+Customers - Page number elements found: 0
+Customers - Size selector elements found: 0
+Customers - Pagination text: No pagination found
+
+=== STEP 5: Leads Page ===
+Leads URL: http://localhost:3001/dashboard/leads
+Leads - Pagination elements found: 0
+Leads - Pagination text: No pagination found
+
+=== STEP 6: Service Inspections Page ===
+Inspections URL: http://localhost:3001/dashboard/service/inspections
+Inspections - Pagination elements found: 0
+Inspections - Size selector elements found: 0
+Inspections - Pagination text: No pagination found
+
+=== STEP 7: Service Consultations Page ===
+Consultations URL: http://localhost:3001/dashboard/service/consultations
+Consultations - Pagination elements found: 0
+Consultations - Size selector elements found: 0
+Consultations - Pagination text: No pagination found
+
+=== STEP 8: Service Stats Page ===
+Stats URL: http://localhost:3001/dashboard/service/stats
+Stats - Card/stat elements found: 0
+Stats - Chart elements found: 29
+Stats - Page text (first 1000 chars): 火客V5.0专业版工作台线索管理客户管理商机管理客服中心工单管理历史对话访客追踪营销活动工作流渠道管理知识库数据分析实时监控消息中心组织架构系统设置Ctrl+K快速搜索收起侧边栏AAdmin在线工作台/客服中心/客服统计在线A页面出现错误Rendered more hooks than during the previous render.重试(self.__next_f=self.__next_f||[]).push([0])self.__next_f.push([1,"5:I[\"(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/next-devtools/userspace/app/segment-explorer-node.js\",[\"app-pages-internals\",\"static/chunks/app-pages-internals.js\"],\"SegmentViewNode\"]\n7:\"$Sreact.fragment\"\n14:I[\"(app-pages-browser)/./app/providers.tsx\",[\"app/layout\",\"static/chunks/app/layout.js\"],\"Providers\"]\n16:I[\"(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/client/components/layout-router.js\",[\"app-pages-internals\",\"static/chunks/app-pages-internals.js\"],\"\"]\n17:I[\"(app-pages-browser)/./app/error.tsx\",[\"app/error\",\"static/chunks/app/error.js\"],\"default\"]\
+
+=== Console Errors ===
+Console Error: %o
+
+%s TypeError: stats.avgScore.toFixed is not a function
+    at InspectionsPageContent (webpack-internal:///(app-pages-browser)/./app/dashboard/service/inspections/page.tsx:415:164)
+    at Object.react_stack_bottom_frame (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:23584:20)
+    at renderWithHooks (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:6793:22)
+    at updateFunctionComponent (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:9247:19)
+    at beginWork (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:10858:18)
+    at runWithFiberInDEV (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:872:30)
+    at performUnitOfWork (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15727:22)
+    at workLoopSync (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15547:41)
+    at renderRootSync (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15527:11)
+    at performWorkOnRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15034:44)
+    at performSyncWorkOnRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:16831:7)
+    at flushSyncWorkAcrossRoots_impl (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:16677:21)
+    at processRootScheduleInMicrotask (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:16715:9)
+    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:16850:13) The above error occurred in the <InspectionsPageContent> component. It was handled by the <ErrorBoundary> error boundary.
+Console Error: React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ ServiceStatsContent 1. useContext                 useContext
+2. useContext                 useContext
+3. useMemo                    useMemo
+4. useState                   useState
+5. useContext                 useContext
+6. useContext                 useContext
+7. useContext                 useContext
+8. useEffect                  useEffect
+9. useState                   useState
+10. useCallback               useCallback
+11. useSyncExternalStore      useSyncExternalStore
+12. useEffect                 useEffect
+13. undefined                 useMemo
+
+Console Error: %o
+
+%s Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:6979:17)
+    at updateMemo (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:7882:18)
+    at Object.useMemo (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:24153:18)
+    at exports.useMemo (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react/cjs/react.development.js:1240:34)
+    at ServiceStatsContent (webpack-internal:///(app-pages-browser)/./app/dashboard/service/stats/page.tsx:165:74)
+    at Object.react_stack_bottom_frame (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:23584:20)
+    at renderWithHooks (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:6793:22)
+    at updateFunctionComponent (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:9247:19)
+    at beginWork (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:10858:18)
+    at runWithFiberInDEV (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:872:30)
+    at performUnitOfWork (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15727:22)
+    at workLoopSync (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15547:41)
+    at renderRootSync (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15527:11)
+    at performWorkOnRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15034:44)
+    at performSyncWorkOnRoot (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:16831:7)
+    at flushSyncWorkAcrossRoots_impl (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:16677:21)
+    at processRootScheduleInMicrotask (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:16715:9)
+    at eval (webpack-internal:///(app-pages-browser)/../../node_modules/.pnpm/next@15.5.12_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:16850:13) The above error occurred in the <ServiceStatsContent> component. It was handled by the <ErrorBoundary> error boundary.
+
+=== SUMMARY ===

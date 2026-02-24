@@ -1,0 +1,40 @@
+{
+  "name": "@huoke/web",
+  "version": "5.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@huoke/shared": "workspace:*",
+    "@tanstack/react-query": "^5",
+    "class-variance-authority": "^0.7",
+    "clsx": "^2",
+    "dayjs": "^1",
+    "lucide-react": "^0.460",
+    "next": "^15",
+    "react": "^19",
+    "react-dom": "^19",
+    "recharts": "^2",
+    "socket.io-client": "^4.8.3",
+    "sonner": "^1",
+    "tailwind-merge": "^2",
+    "zustand": "^5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "eslint": "^9.39.3",
+    "eslint-config-next": "^15.5.12",
+    "postcss": "^8",
+    "tailwindcss": "^4",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,31 @@
+# Multi-stage build for Hono server (apps/server)
+# Build context: repo root. Expects apps/server with tsup/tsx build → dist/index.js
+
+# ---- Base ----
+FROM node:22-alpine AS base
+RUN corepack enable && corepack prepare pnpm@latest --activate
+WORKDIR /app
+
+# ---- Dependencies ----
+FROM base AS deps
+COPY . .
+RUN pnpm install --frozen-lockfile
+
+# ---- Builder ----
+FROM base AS builder
+COPY --from=deps /app .
+RUN pnpm run build --filter=./apps/server
+
+# ---- Runner ----
+FROM node:22-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 hono
+USER hono
+EXPOSE 4000
+ENV PORT=4000
+# Copy built server and production node_modules for the server app
+COPY --from=builder --chown=hono:nodejs /app/apps/server/dist ./dist
+COPY --from=builder --chown=hono:nodejs /app/apps/server/node_modules ./node_modules
+COPY --from=builder --chown=hono:nodejs /app/apps/server/package.json ./package.json
+CMD ["node", "dist/index.js"]
