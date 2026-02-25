@@ -3,6 +3,7 @@ node_modules/
 dist/
 .turbo/
 .env
+.env.prod
 .env.local
 .env.*.local
 *.log
