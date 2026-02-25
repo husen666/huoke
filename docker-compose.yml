@@ -19,7 +19,7 @@ services:
       args:
         NEXT_BASE_PATH: ${NEXT_BASE_PATH:-}
         NEXT_PUBLIC_BASE_PATH: ${NEXT_PUBLIC_BASE_PATH:-}
-    env_file: .env
+    env_file: ${ENV_FILE:-.env}
     depends_on:
       postgres:
         condition: service_healthy
@@ -31,7 +31,7 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile.server
-    env_file: .env
+    env_file: ${ENV_FILE:-.env}
     depends_on:
       postgres:
         condition: service_healthy
