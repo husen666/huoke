@@ -18,16 +18,16 @@ RUN pnpm run build --filter=./apps/server
 
 # ---- Runner ----
 FROM node:22-alpine AS runner
-WORKDIR /app
+WORKDIR /app/apps/server
 ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 hono
 USER hono
 EXPOSE 4000
 ENV PORT=4000
-# Copy built server and monorepo runtime deps.
-# NOTE: pnpm workspace links can break if only apps/server/node_modules is copied.
+# Keep workspace layout so pnpm symlinks in apps/server/node_modules remain valid.
 COPY --from=builder --chown=hono:nodejs /app/apps/server/dist ./dist
-COPY --from=builder --chown=hono:nodejs /app/node_modules ./node_modules
-COPY --from=builder --chown=hono:nodejs /app/packages/shared ./packages/shared
+COPY --from=builder --chown=hono:nodejs /app/apps/server/node_modules ./node_modules
 COPY --from=builder --chown=hono:nodejs /app/apps/server/package.json ./package.json
+COPY --from=builder --chown=hono:nodejs /app/node_modules /app/node_modules
+COPY --from=builder --chown=hono:nodejs /app/packages/shared /app/packages/shared
 CMD ["node", "dist/index.mjs"]
