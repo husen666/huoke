@@ -1,0 +1,30 @@
+# VCS
+.git
+.gitignore
+
+# Dependencies / build outputs
+node_modules
+**/node_modules
+.next
+**/.next
+dist
+**/dist
+.turbo
+coverage
+.cache
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+
+# Runtime/generated data
+docker/data
+apps/server/uploads
+screenshots
+
+# Logs / misc
+*.log
+*.tmp
+*.swp
+.DS_Store

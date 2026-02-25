@@ -17,6 +17,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile.web
       args:
+        NEXT_OUTPUT: ${NEXT_OUTPUT:-}
         NEXT_BASE_PATH: ${NEXT_BASE_PATH:-}
         NEXT_PUBLIC_BASE_PATH: ${NEXT_PUBLIC_BASE_PATH:-}
     env_file: ${ENV_FILE:-.env}

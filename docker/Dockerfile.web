@@ -15,8 +15,10 @@ RUN pnpm install --frozen-lockfile
 FROM base AS builder
 COPY --from=deps /app .
 ENV NEXT_TELEMETRY_DISABLED=1
+ARG NEXT_OUTPUT=
 ARG NEXT_BASE_PATH=
 ARG NEXT_PUBLIC_BASE_PATH=
+ENV NEXT_OUTPUT=${NEXT_OUTPUT}
 ENV NEXT_BASE_PATH=${NEXT_BASE_PATH}
 ENV NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH}
 # Build only the web app (turbo will build dependencies if any)
