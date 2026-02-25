@@ -16,6 +16,9 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile.web
+      args:
+        NEXT_BASE_PATH: ${NEXT_BASE_PATH:-}
+        NEXT_PUBLIC_BASE_PATH: ${NEXT_PUBLIC_BASE_PATH:-}
     env_file: .env
     depends_on:
       postgres:

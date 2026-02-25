@@ -13,7 +13,8 @@
   var POSITION = script && script.getAttribute('data-position') || 'right';
   var COLOR = script && script.getAttribute('data-color') || '#4F46E5';
   var TITLE = script && script.getAttribute('data-title') || '在线客服';
-  var PRE_CHAT = script && script.getAttribute('data-pre-chat') !== 'false';
+  var PRE_CHAT_ATTR = script && script.getAttribute('data-pre-chat');
+  var PRE_CHAT = PRE_CHAT_ATTR !== null ? PRE_CHAT_ATTR !== 'false' : true;
 
   if (!SITE_TOKEN) { console.warn('[HuoKe Widget] Missing data-site-token'); return; }
 
@@ -368,6 +369,21 @@
     return fetch(API_BASE + '/api/v1/widget' + path, Object.assign({
       headers: { 'Content-Type': 'application/json' },
     }, opts)).then(function (r) { return r.json(); });
+  }
+
+  var widgetConfigPromise = null;
+  function ensureWidgetConfigLoaded() {
+    if (widgetConfigPromise) return widgetConfigPromise;
+    widgetConfigPromise = apiCall('/config?token=' + encodeURIComponent(SITE_TOKEN))
+      .then(function (res) {
+        if (!res || !res.success || !res.data) return;
+        // Script param has highest priority; otherwise follow dashboard config.
+        if (PRE_CHAT_ATTR === null && typeof res.data.preChatFormEnabled === 'boolean') {
+          PRE_CHAT = !!res.data.preChatFormEnabled;
+        }
+      })
+      .catch(function () { /* fall back to current defaults */ });
+    return widgetConfigPromise;
   }
 
   function mapWidgetError(raw) {
@@ -1485,21 +1501,28 @@
   }
 
   // ---- Events ----
-  btn.addEventListener('click', function () {
-    isOpen = !isOpen;
-    if (isOpen) {
-      ProactiveModule.hideCard();
-      panel.classList.add('open');
-      unread = 0;
-      badge.style.display = 'none';
-      if (PRE_CHAT && !preChatDone) {
-        showPreChatForm();
-      } else {
-        openChat();
-      }
+  function openWidgetPanel() {
+    ProactiveModule.hideCard();
+    panel.classList.add('open');
+    unread = 0;
+    badge.style.display = 'none';
+    if (PRE_CHAT && !preChatDone) {
+      showPreChatForm();
     } else {
-      panel.classList.remove('open');
+      openChat();
     }
+  }
+
+  btn.addEventListener('click', function () {
+    if (isOpen) {
+      isOpen = false;
+      panel.classList.remove('open');
+      return;
+    }
+    ensureWidgetConfigLoaded().finally(function () {
+      isOpen = true;
+      openWidgetPanel();
+    });
   });
 
   closeBtn.addEventListener('click', function () {
@@ -1512,17 +1535,11 @@
   });
   document.getElementById('huoke-proactive-open').addEventListener('click', function () {
     ProactiveModule.hideCard();
-    if (!isOpen) {
+    if (isOpen) return;
+    ensureWidgetConfigLoaded().finally(function () {
       isOpen = true;
-      panel.classList.add('open');
-      unread = 0;
-      badge.style.display = 'none';
-      if (PRE_CHAT && !preChatDone) {
-        showPreChatForm();
-      } else {
-        openChat();
-      }
-    }
+      openWidgetPanel();
+    });
   });
 
   window.addEventListener('beforeunload', function () {
@@ -1728,6 +1745,7 @@
   });
 
   // Start proactive rules on page load (does not require panel open)
+  ensureWidgetConfigLoaded();
   ProactiveModule.start();
 
   // Restore session

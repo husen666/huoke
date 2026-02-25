@@ -1,6 +1,9 @@
+const rawBasePath = (process.env.NEXT_PUBLIC_BASE_PATH || '').trim()
+const BASE_PATH = rawBasePath ? `/${rawBasePath.replace(/^\/+|\/+$/g, '')}` : ''
+const DEFAULT_BROWSER_API_BASE = `${BASE_PATH}/api/v1`
 const BASE_URL =
   typeof window !== 'undefined'
-    ? process.env.NEXT_PUBLIC_API_URL || '/api/v1'
+    ? process.env.NEXT_PUBLIC_API_URL || DEFAULT_BROWSER_API_BASE
     : process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1'
 
 const TOKEN_KEY = 'huoke_token'
@@ -112,7 +115,7 @@ export async function fetchApi<T>(
       }
     }
     clearToken()
-    if (typeof window !== 'undefined') window.location.href = '/login'
+    if (typeof window !== 'undefined') window.location.href = `${BASE_PATH}/login`
     throw new Error('登录已过期，请重新登录')
   }
 
@@ -234,7 +237,7 @@ export async function requestUpgrade(plan: string, contact?: string) {
 
 export async function adminLogin(email: string, password: string) {
   const BASE = typeof window !== 'undefined'
-    ? process.env.NEXT_PUBLIC_API_URL || '/api/v1'
+    ? process.env.NEXT_PUBLIC_API_URL || DEFAULT_BROWSER_API_BASE
     : process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1'
   const res = await fetch(`${BASE}/admin/login`, {
     method: 'POST',
@@ -246,7 +249,7 @@ export async function adminLogin(email: string, password: string) {
 
 export async function adminGetStats(token: string) {
   const BASE = typeof window !== 'undefined'
-    ? process.env.NEXT_PUBLIC_API_URL || '/api/v1'
+    ? process.env.NEXT_PUBLIC_API_URL || DEFAULT_BROWSER_API_BASE
     : process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1'
   const res = await fetch(`${BASE}/admin/stats`, { headers: { Authorization: `Bearer ${token}` } })
   return res.json()
@@ -254,7 +257,7 @@ export async function adminGetStats(token: string) {
 
 export async function adminGetOrgs(token: string, params?: Record<string, string>) {
   const BASE = typeof window !== 'undefined'
-    ? process.env.NEXT_PUBLIC_API_URL || '/api/v1'
+    ? process.env.NEXT_PUBLIC_API_URL || DEFAULT_BROWSER_API_BASE
     : process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1'
   const q = params ? '?' + new URLSearchParams(params).toString() : ''
   const res = await fetch(`${BASE}/admin/orgs${q}`, { headers: { Authorization: `Bearer ${token}` } })
@@ -263,7 +266,7 @@ export async function adminGetOrgs(token: string, params?: Record<string, string
 
 export async function adminGetOrg(token: string, orgId: string) {
   const BASE = typeof window !== 'undefined'
-    ? process.env.NEXT_PUBLIC_API_URL || '/api/v1'
+    ? process.env.NEXT_PUBLIC_API_URL || DEFAULT_BROWSER_API_BASE
     : process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1'
   const res = await fetch(`${BASE}/admin/orgs/${orgId}`, { headers: { Authorization: `Bearer ${token}` } })
   return res.json()
@@ -271,7 +274,7 @@ export async function adminGetOrg(token: string, orgId: string) {
 
 export async function adminUpdatePlan(token: string, orgId: string, plan: string, expiresAt?: string) {
   const BASE = typeof window !== 'undefined'
-    ? process.env.NEXT_PUBLIC_API_URL || '/api/v1'
+    ? process.env.NEXT_PUBLIC_API_URL || DEFAULT_BROWSER_API_BASE
     : process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1'
   const res = await fetch(`${BASE}/admin/orgs/${orgId}/plan`, {
     method: 'PUT',

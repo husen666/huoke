@@ -862,7 +862,9 @@ function WidgetSection() {
                 </label>
                 <div className="flex items-center gap-2">
                   <Input type="number" min={0} value={form.autoPopupDelay ?? 0} onChange={e => update({ autoPopupDelay: parseInt(e.target.value) || 0 })} className="w-24 h-9" />
-                  <span className="text-xs text-slate-400">秒（0 = 不弹出）</span>
+                  <span className="inline-flex items-center rounded-md bg-slate-50 px-2 py-1 text-xs text-slate-500 whitespace-nowrap">
+                    秒（0 = 不弹出）
+                  </span>
                 </div>
               </div>
             </div>
