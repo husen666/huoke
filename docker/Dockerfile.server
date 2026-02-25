@@ -1,5 +1,5 @@
 # Multi-stage build for Hono server (apps/server)
-# Build context: repo root. Expects apps/server with tsup/tsx build → dist/index.js
+# Build context: repo root. Expects apps/server with tsup/tsx build → dist/index.mjs
 
 # ---- Base ----
 FROM node:22-alpine AS base
@@ -24,8 +24,10 @@ RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 hono
 USER hono
 EXPOSE 4000
 ENV PORT=4000
-# Copy built server and production node_modules for the server app
+# Copy built server and monorepo runtime deps.
+# NOTE: pnpm workspace links can break if only apps/server/node_modules is copied.
 COPY --from=builder --chown=hono:nodejs /app/apps/server/dist ./dist
-COPY --from=builder --chown=hono:nodejs /app/apps/server/node_modules ./node_modules
+COPY --from=builder --chown=hono:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=hono:nodejs /app/packages/shared ./packages/shared
 COPY --from=builder --chown=hono:nodejs /app/apps/server/package.json ./package.json
 CMD ["node", "dist/index.mjs"]
